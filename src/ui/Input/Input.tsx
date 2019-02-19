@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Fieldset } from './../sc/Fieldset';
+import { Fieldset } from 'ui/Input/sc/Fieldset';
 import { Label } from 'ui/Input/sc/Label';
 import { Input } from 'ui/Input/sc/Input';
 import { Error } from 'ui/Input/sc/Error';

@@ -10,3 +10,8 @@ export interface IInnputProps {
 	onFocus?: (args: any) => any;
 	onBlur?: (args: any) => any;
 }
+
+export interface IInnputPropsValidation {
+	onCheckValidation: (value: string) => string;
+	onReportValidation: (obj: { name: string, valid: boolean }) => void
+}
