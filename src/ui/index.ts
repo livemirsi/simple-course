@@ -4,9 +4,9 @@ export { Layout } from './Layout';
 
 export { Title } from './Title';
 
-export { InputComponent as Input } from './Input/components/Input';
+export { InputComponent as Input } from './Input/Input';
 
-export { withValidationInput } from './Input/enhance/withValidationInput';
+export { InputValidation } from './Input/InputValidation';
 
 export { Button } from './Button';
 
