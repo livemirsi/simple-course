@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import { Title, Input, withValidationInput, Button, Overlay, Spinner } from 'ui';
-import { IFormProps } from 'features/Login/types/form';
+import { IFormProps } from 'features/LoginForm/types/form';
 
 const EnhanceInput = withValidationInput(Input);
 

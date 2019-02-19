@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from 'ui';
-import { Login } from 'features/Login/Login';
+import { LoginForm } from 'features/LoginForm/LoginForm';
 import { RouteComponentProps } from 'react-router-dom';
 
 export const LoginPage = ({ history }: RouteComponentProps) => {
@@ -13,7 +13,7 @@ export const LoginPage = ({ history }: RouteComponentProps) => {
 
 	return (
 		<Layout width={'500px'}>
-			<Login onAuthDone={handleAuthDone} />
+			<LoginForm onAuthDone={handleAuthDone} />
 		</Layout>
 	);
 

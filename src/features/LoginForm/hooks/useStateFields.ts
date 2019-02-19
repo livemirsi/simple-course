@@ -1,12 +1,12 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
+
+import { IFormProps } from 'features/LoginForm/types/form';
 
 interface IState {
 	[x: string]: string;
 }
 
-interface IChangeField {
-  ({ currentTarget }: FormEvent<HTMLInputElement>): void;
-}
+type IChangeField = IFormProps['onChange'];
 
 export const useStateFields = (): [string, string, IChangeField] => {
 

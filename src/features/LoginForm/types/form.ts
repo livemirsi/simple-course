@@ -1,7 +1,5 @@
 import { FormEvent } from 'react';
 
-// import { IUser } from 'stores/user/type';
-
 export interface IFormProps {
 	status: string;
 	email: string;

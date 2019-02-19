@@ -1,20 +1,16 @@
 import { useState } from 'react';
 
+import { IFormProps } from 'features/LoginForm/types/form';
+
 interface IState {
 	[x: string]: boolean;
 }
 
-interface IReportValidation {
-	({ name, valid }: {name: string, valid: boolean}): void
-}
+type IReportValidation = IFormProps['onReportValidation'];
 
-interface ICheckEmail {
-	(value: string): string
-}
+type ICheckEmail = IFormProps['checkEmail'];
 
-interface ICheckPassword {
-	(value: string): string
-}
+type ICheckPassword = IFormProps['checkPassword'];
 
 type TOutpt = [boolean, boolean, ICheckEmail, ICheckPassword, IReportValidation];
 

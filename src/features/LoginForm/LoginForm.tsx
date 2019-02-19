@@ -3,16 +3,16 @@ import { observer } from 'mobx-react-lite';
 
 import { user } from 'stores/user/user';
 
-import { useStateFields } from 'features/Login/hooks/useStateFields';
-import { useValidation } from 'features/Login/hooks/useValidation';
+import { useStateFields } from 'features/LoginForm/hooks/useStateFields';
+import { useValidation } from 'features/LoginForm/hooks/useValidation';
 
-import { FormComponent } from 'features/Login/components/Form';
+import { FormComponent } from 'features/LoginForm/components/Form';
 
 interface IProps {
 	onAuthDone: () => void
 }
 
-export const LoginComponent = ({ onAuthDone }: IProps) => {
+export const LoginFormComponent = ({ onAuthDone }: IProps) => {
 
 	const userStore = useContext(user);
 	const [email, password, changeField] = useStateFields();
@@ -52,5 +52,5 @@ export const LoginComponent = ({ onAuthDone }: IProps) => {
 
 };
 
-export const Login = observer(LoginComponent);
+export const LoginForm = observer(LoginFormComponent);
 
