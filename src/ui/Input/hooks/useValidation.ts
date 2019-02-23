@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { THandleEventInput, IInputPropsValidation } from 'ui/Input/types/input';
+import { TEventFormInput, TEventFocusInput, IInputPropsValidation } from 'ui/Input/types/input';
 
 interface IProps extends Pick<
 	IInputPropsValidation,
@@ -9,27 +9,26 @@ interface IProps extends Pick<
 	name: string;
 }
 type Error = string;
-type THandleEvent = THandleEventInput;
-type TOutpt = [Error, THandleEvent, THandleEvent, THandleEvent];
+type TOutpt = [Error, TEventFocusInput, TEventFocusInput, TEventFormInput];
 
 export const useValidation = ({ name, onCheckValidation, onReportValidation }: IProps): TOutpt => {
 
 	const [error, setError] = useState<Error>('');
 
-	const handleFocus = () => {
+	const handleFocus: TEventFocusInput = () => {
 
 		setError('');
 
 	};
 
-	const handleBlur: THandleEvent = ({ currentTarget }) => {
+	const handleBlur: TEventFocusInput = ({ target }) => {
 
-		const newError = onCheckValidation(currentTarget.value);
+		const newError = onCheckValidation(target.value);
 		setError(newError);
 
 	};
 
-	const handleInput: THandleEvent = ({ currentTarget }) => {
+	const handleInput: TEventFormInput = ({ currentTarget }) => {
 
 		onReportValidation({
 			name,
