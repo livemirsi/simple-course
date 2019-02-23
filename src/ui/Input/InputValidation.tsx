@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { IInnputProps, IInnputPropsValidation } from './types';
+import { IInputPropsValidation } from 'ui/Input/types/input';
 
 import { useValidation } from './hooks/useValidation';
 import { InputComponent } from './Input';
 
-type TProps = IInnputProps & IInnputPropsValidation;
+type TProps = IInputPropsValidation;
 
 export const InputValidation = (props: TProps) => {
 

@@ -1,12 +1,15 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 
-import { IInnputPropsValidation } from 'ui/Input/types';
+import { THandleEventInput, IInputPropsValidation } from 'ui/Input/types/input';
 
-interface IProps extends IInnputPropsValidation {
+interface IProps extends Pick<
+	IInputPropsValidation,
+	'onCheckValidation' | 'onReportValidation'
+> {
 	name: string;
 }
 type Error = string;
-type THandleEvent = ({ currentTarget }: FormEvent<HTMLInputElement>) => void;
+type THandleEvent = THandleEventInput;
 type TOutpt = [Error, THandleEvent, THandleEvent, THandleEvent];
 
 export const useValidation = ({ name, onCheckValidation, onReportValidation }: IProps): TOutpt => {
