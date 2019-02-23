@@ -1,6 +1,8 @@
-import { FormEvent } from 'react';
+import { FormEvent, FocusEvent } from 'react';
 
-export type THandleEventInput = ({ currentTarget }: FormEvent<HTMLInputElement>) => void;
+export type TEventFormInput = ({ currentTarget }: FormEvent<HTMLInputElement>) => void;
+
+export type TEventFocusInput = ({ target }: FocusEvent<HTMLInputElement>) => void;
 
 export interface IInputProps {
 	value: string;
@@ -9,10 +11,10 @@ export interface IInputProps {
 	error?: string;
 	margin?: string;
 	type?: string;
-	onChange: THandleEventInput;
-	onInput?: THandleEventInput;
-	onFocus?: THandleEventInput;
-	onBlur?: THandleEventInput;
+	onChange: TEventFormInput;
+	onInput?: TEventFormInput;
+	onFocus?: TEventFocusInput;
+	onBlur?: TEventFocusInput;
 }
 
 export interface IInputPropsValidation {
@@ -22,7 +24,7 @@ export interface IInputPropsValidation {
 	error?: string;
 	margin?: string;
 	type?: string;
-	onChange: THandleEventInput;
+	onChange: TEventFormInput;
 	onCheckValidation: (value: string) => string;
 	onReportValidation: (obj: { name: string, valid: boolean }) => void
 }
