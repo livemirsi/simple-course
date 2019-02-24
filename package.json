@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --setupFiles ./setupTests.ts",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -28,7 +28,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/enzyme": "^3.1.18",
     "@types/jest": "^24.0.6",
     "@types/node": "^10.12.19",
     "@types/react": "^16.7.22",
@@ -38,9 +37,8 @@
     "@types/styled-components": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "1.1.0",
     "@typescript-eslint/parser": "1.1.0",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.9.1",
     "react-scripts": "2.1.5",
+    "react-testing-library": "^6.0.0",
     "typescript": "^3.2.4"
   }
 }
