@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { TEventFormInput, TEventFocusInput, IInputPropsValidation } from 'ui/Input/types/input';
+import { TEventChangeInput, TEventFocusInput, IInputPropsValidation } from 'ui/Input/types/input';
 
 interface IProps extends Pick<
 	IInputPropsValidation,
@@ -9,7 +9,7 @@ interface IProps extends Pick<
 	name: string;
 }
 type Error = string;
-type TOutpt = [Error, TEventFocusInput, TEventFocusInput, TEventFormInput];
+type TOutpt = [Error, TEventFocusInput, TEventFocusInput, TEventChangeInput];
 
 export const useValidation = ({ name, onCheckValidation, onReportValidation }: IProps): TOutpt => {
 
@@ -28,11 +28,11 @@ export const useValidation = ({ name, onCheckValidation, onReportValidation }: I
 
 	};
 
-	const handleInput: TEventFormInput = ({ currentTarget }) => {
+	const handleInput: TEventChangeInput = ({ target }) => {
 
 		onReportValidation({
 			name,
-			valid: !onCheckValidation(currentTarget.value)
+			valid: !onCheckValidation(target.value)
 		});
 
 	};

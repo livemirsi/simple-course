@@ -10,7 +10,7 @@ import { IInputProps } from 'ui/Input/types/input';
 export const InputComponent = (props: IInputProps) => {
 
 	const {
-		value, name, type, label, error, margin, onInput, onChange, onFocus, onBlur
+		value, name, type, label, error, margin, onInput, onClick, onChange, onFocus, onBlur
 	} = props;
 
 	return (
@@ -19,11 +19,13 @@ export const InputComponent = (props: IInputProps) => {
 			<Input
 				value={value}
 				name={name}
+				aria-label={name}
 				type={type || 'text'}
 				onInput={onInput}
 				onChange={onChange}
 				onFocus={onFocus}
 				onBlur={onBlur}
+				onClick={onClick}
 			/>
 			{error && <Error>{error}</Error>}
 		</Fieldset>
