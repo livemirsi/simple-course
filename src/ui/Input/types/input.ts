@@ -1,6 +1,6 @@
-import { FormEvent, FocusEvent } from 'react';
+import { ChangeEvent, FocusEvent } from 'react';
 
-export type TEventFormInput = ({ currentTarget }: FormEvent<HTMLInputElement>) => void;
+export type TEventChangeInput = ({ currentTarget }: ChangeEvent<HTMLInputElement>) => void;
 
 export type TEventFocusInput = ({ target }: FocusEvent<HTMLInputElement>) => void;
 
@@ -11,10 +11,11 @@ export interface IInputProps {
 	error?: string;
 	margin?: string;
 	type?: string;
-	onChange: TEventFormInput;
-	onInput?: TEventFormInput;
+	onChange: TEventChangeInput;
+	onInput?: TEventChangeInput;
 	onFocus?: TEventFocusInput;
 	onBlur?: TEventFocusInput;
+	onClick?: (args: any) => any
 }
 
 export interface IInputPropsValidation {
@@ -24,7 +25,7 @@ export interface IInputPropsValidation {
 	error?: string;
 	margin?: string;
 	type?: string;
-	onChange: TEventFormInput;
+	onChange: TEventChangeInput;
 	onCheckValidation: (value: string) => string;
 	onReportValidation: (obj: { name: string, valid: boolean }) => void
 }
