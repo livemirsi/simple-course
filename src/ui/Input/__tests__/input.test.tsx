@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { InputValidation } from 'ui/Input/InputValidation';
-import { THandleEventInput, IInputPropsValidation } from 'ui/Input/types/input';
+import { render, fireEvent } from 'react-testing-library';
+import { TEventChangeInput, IInputPropsValidation } from 'ui/Input/types/input';
 
 describe('UI/Input', () => {
 
@@ -10,20 +10,17 @@ describe('UI/Input', () => {
 		value: string;
 	}
 	const state: IState = {
-		value: '',
-		valid: false
+		value:         '',
+		testNameValid: false
 	};
 
-	const handleChange: THandleEventInput = ({ currentTarget }) => {
+	const handleChange: TEventChangeInput = ({ target }) => {
 
-		console.log(currentTarget);
-		state.value = currentTarget.value;
+		state.value = target.value;
 
 	};
 
 	const handleCheckValidation: IInputPropsValidation['onCheckValidation'] = value => {
-
-		console.log('work');
 
 		return (/^([A-Za-z]+)$/i).test(value) ? '' : 'error validation';
 
@@ -31,28 +28,60 @@ describe('UI/Input', () => {
 
 	const handleReportValidation: IInputPropsValidation['onReportValidation'] = obj => {
 
-		state[obj.name] = obj.valid;
+		state.testNameValid = obj.valid;
 
 	};
 
-	const wrapper = mount(<InputValidation
+	const { queryByText, getByLabelText } = render(<InputValidation
 		value={state.value}
-		name={'test name'}
+		name={'testName'}
 		type={'text'}
 		label={'test label'}
 		onChange={handleChange}
 		onCheckValidation={handleCheckValidation}
 		onReportValidation={handleReportValidation}
 	/>);
+	const input = getByLabelText('testName');
 
-	test('check exists label and input', () => {
+	test('change value', () => {
 
-		expect(wrapper.exists('label')).toBeTruthy();
-		expect(wrapper.exists('input')).toBeTruthy();
+		fireEvent.change(input, { target: { value: '12345678' } });
+		expect(state.value).toBe('12345678');
 
-		const attrs = wrapper.find('input').props();
-		expect(attrs.type).toBe('text');
-		expect(attrs.name).toBe('test name');
+	});
+
+	test('check validation onBlur, get error', () => {
+
+		fireEvent.blur(input, { target: { value: '12345678' } });
+		expect(queryByText('error validation')).not.toBe(null);
+
+	});
+
+	test('check validation onBlur, get success', () => {
+
+		fireEvent.blur(input, { target: { value: 'text' } });
+		expect(queryByText('error validation')).toBe(null);
+
+	});
+
+	test('reset validation on Focus', () => {
+
+		fireEvent.focus(input, { target: { value: '12345678' } });
+		expect(queryByText('error validation')).toBe(null);
+
+	});
+
+	test('report valdiation, get error', () => {
+
+		fireEvent.input(input, { target: { value: '12345678' } });
+		expect(state.testNameValid).toBeFalsy();
+
+	});
+
+	test('report valdiation, get success', () => {
+
+		fireEvent.input(input, { target: { value: 'asfasf' } });
+		expect(state.testNameValid).toBeTruthy();
 
 	});
 
