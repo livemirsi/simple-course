@@ -1,8 +1,12 @@
 import styled, { css, keyframes } from 'styled-components';
 
+import { TVariant } from 'ui/Theme/types';
+import { colors, getColorByStatus } from 'ui/Theme/colors';
+
 interface IProps {
 	['data-index']: number,
 	delay: number;
+	variant: TVariant;
 }
 
 const rightToLeft = keyframes`
@@ -29,7 +33,9 @@ export const Message = styled.div<IProps>`
 	width: 100%;
 	margin-bottom: 10px;
 	padding: 20px 20px 20px 40px;
-	background: #fff;
+	border-left: 5px solid ${({ variant }) => getColorByStatus(variant)};
+	background: ${colors.white};
+	color: ${colors.black};
 	font-size: 15px;
 	cursor: pointer;
 

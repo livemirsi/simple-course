@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from 'ui/Theme/colors';
 
 export const Overlay = styled.div`
 	position: absolute;
@@ -9,7 +10,7 @@ export const Overlay = styled.div`
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: #fff;
+	background: ${colors.white};
 	opacity: 0.7;
 	z-index: 100;
 `;

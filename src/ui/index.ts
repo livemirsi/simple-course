@@ -1,3 +1,5 @@
+import { colors, getColorByStatus } from './Theme/colors';
+
 export { GlobalStyle } from './GlobalStyle';
 
 export { Layout } from './Layout';
@@ -15,3 +17,8 @@ export { Overlay } from './Overlay';
 export { Spinner } from './Spinner';
 
 export { Notification } from './Notification/Notification';
+
+export const theme = {
+	colors,
+	getColorByStatus
+};
