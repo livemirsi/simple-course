@@ -13,3 +13,5 @@ export { Button } from './Button';
 export { Overlay } from './Overlay';
 
 export { Spinner } from './Spinner';
+
+export { Notification } from './Notification/Notification';
