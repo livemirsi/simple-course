@@ -33,6 +33,7 @@ export const Message = styled.div<IProps>`
 	width: 100%;
 	margin-bottom: 10px;
 	padding: 20px 20px 20px 40px;
+	box-sizing: border-box;
 	border-left: 5px solid ${({ variant }) => getColorByStatus(variant)};
 	background: ${colors.white};
 	color: ${colors.black};
