@@ -1,8 +1,11 @@
-import { TVariant } from 'ui/theme/type';
+import { TVariant } from 'ui/Theme/types';
 
 export const colors = {
-	blue: '#4286f4',
-	red:  '#f44542'
+	white: '#fff',
+	black: '#4f4f4f',
+	grey:  '#ccc',
+	blue:  '#4286f4',
+	red:   '#f44542'
 };
 
 export const getColorByStatus = (variant: TVariant) => {

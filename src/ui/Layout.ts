@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from 'ui/Theme/colors';
 
 interface ILayoutProps {
 	width?: string;
@@ -13,7 +14,7 @@ export const Layout = styled.div<ILayoutProps>`
 	box-sizing: border-box;
 	margin: 20vh auto;
 	padding: 20px;
-	background: #fff;
+	background: ${colors.white};
 
   @media (max-width: 1024px) {
     width: 90vw;

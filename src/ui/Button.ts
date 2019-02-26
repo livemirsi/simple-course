@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from 'ui/Theme/colors';
 
 interface IButtonProps {
 	margin?: string;
@@ -8,10 +9,10 @@ interface IButtonProps {
 export const Button = styled.button<IButtonProps>`
 	height: 40px;
 	margin: ${({ margin }) => margin ? margin : '0px'};
-	color: #fff;
+	color: ${colors.white};
 	font-size: 16px;
 	text-transform: uppercase;
-	background: #4286f4;
+	background: ${colors.blue};
 	border: none;
 	cursor: pointer;
 

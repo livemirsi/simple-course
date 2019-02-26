@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
-import { Title, InputValidation, Button, Overlay, Spinner, Notification } from 'ui';
+import { Title, InputValidation, Button,
+	Overlay, Spinner, Notification, theme } from 'ui';
 import { IFormProps } from 'features/LoginForm/types/form';
 
 export const FormComponent = ({
@@ -34,12 +35,15 @@ export const FormComponent = ({
 		>
 			Log in
 		</Button>
-		<Notification messages={[{ message: 'message1' }, { message: 'message2' }]} />
+		<Notification
+			variant={'error'}
+			messages={[{ message: 'message1' }, { message: 'message2' }]}
+		/>
 		{status === 'wait' &&
 			<Overlay>
 				<Spinner
 					type={'Oval'}
-					color={'#4286f4'}
+					color={theme.colors.blue}
 					height={'100'}
 					width={'100'}
 				/>
