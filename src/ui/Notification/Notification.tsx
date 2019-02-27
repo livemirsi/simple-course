@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { IMessage } from 'ui/Notification/types/message';
 import { TVariant } from 'ui/Theme/types';
@@ -13,9 +13,15 @@ interface IProps {
 	variant?: TVariant;
 }
 
-export const Notification = ({ messages, variant = 'default' }: IProps) => {
+export const Notification = React.memo(({ messages, variant = 'default' }: IProps) => {
 
-	const [showMessages, changeVisibleMessage] = useShow({ messages });
+	const [showMessages, updateId, changeVisibleMessage, setNewMessages] = useShow({ messages });
+
+	useEffect(() => {
+
+		setNewMessages(messages);
+
+	}, [messages]);
 
 	if (!showMessages.length) {
 
@@ -27,7 +33,7 @@ export const Notification = ({ messages, variant = 'default' }: IProps) => {
 		<List>
 			{showMessages.map((item, index) => (
 				<Message
-					key={index}
+					key={`${updateId}-${index}`}
 					data-index={index}
 					delay={index ? index / 10 : 0}
 					variant={variant}
@@ -44,4 +50,4 @@ export const Notification = ({ messages, variant = 'default' }: IProps) => {
 		</List>
 	);
 
-};
+});
