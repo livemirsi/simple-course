@@ -6,11 +6,18 @@ interface IProps {
 	messages: Array<IMessage>;
 }
 
-type IOutput = [Array<IMessage>, IMouseEvent];
+interface ISetNewMessages {
+	(newMessages: Array<IMessage>):void
+}
+
+type IOutput = [Array<IMessage>, number, IMouseEvent, ISetNewMessages];
 
 export const useShow = ({ messages }: IProps): IOutput => {
 
-	const [showMessages, setVisibleMessage] = useState(messages);
+	const [{ updateId, showMessages }, setVisibleMessage] = useState({
+		updateId:     0,
+		showMessages: messages
+	});
 
 	const changeVisibleMessage: IMouseEvent = ({ target }) => {
 
@@ -21,12 +28,24 @@ export const useShow = ({ messages }: IProps): IOutput => {
 
 		if (!isNaN(numberIndexElement)) {
 
-			setVisibleMessage(showMessages.filter((item, index) => index !== numberIndexElement));
+			setVisibleMessage({
+				updateId,
+				showMessages: showMessages.filter((item, index) => index !== numberIndexElement)
+			});
 
 		}
 
 	};
 
-	return [showMessages, changeVisibleMessage];
+	const setNewMessages: ISetNewMessages = newMessages => {
+
+		setVisibleMessage({
+			updateId:     updateId + 1,
+			showMessages: newMessages
+		});
+
+	};
+
+	return [showMessages, updateId, changeVisibleMessage, setNewMessages];
 
 };
