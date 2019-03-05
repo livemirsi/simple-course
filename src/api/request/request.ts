@@ -13,10 +13,7 @@ export const request = async <T>(
 
 		return {
 			status: 500,
-			errors: [{
-				message: 'some error',
-				code:    1
-			}]
+			errors: [{ message: 'some error' }]
 		};
 
 	}

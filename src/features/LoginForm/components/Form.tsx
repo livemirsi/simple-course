@@ -5,7 +5,7 @@ import { Title, InputValidation, Button,
 import { IFormProps } from 'features/LoginForm/types/form';
 
 export const FormComponent = ({
-	status, email, password, emailIsValid, passwordIsValid,
+	status, email, password, emailIsValid, passwordIsValid, errors,
 	onChange, checkEmail, checkPassword, onReportValidation, onLogIn
 }: IFormProps) => (
 	<Fragment>
@@ -35,10 +35,11 @@ export const FormComponent = ({
 		>
 			Log in
 		</Button>
+		{Boolean(errors.length) &&
 		<Notification
 			variant={'error'}
-			messages={[{ message: 'message1' }, { message: 'message2' }]}
-		/>
+			messages={errors}
+		/>}
 		{status === 'wait' &&
 			<Overlay>
 				<Spinner

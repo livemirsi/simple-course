@@ -1,4 +1,5 @@
 import { FormEvent } from 'react';
+import { IError } from 'api/request/type';
 
 export interface IFormProps {
 	status: string;
@@ -6,6 +7,7 @@ export interface IFormProps {
 	password: string;
 	emailIsValid: boolean;
 	passwordIsValid: boolean;
+	errors: Array<IError>;
 	onChange: (args: FormEvent<HTMLInputElement>) => void;
 	checkEmail: (value: string) => string,
 	checkPassword: (value: string) => string,
