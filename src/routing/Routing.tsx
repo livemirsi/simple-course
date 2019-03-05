@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
@@ -10,13 +10,18 @@ import { user } from 'stores/user/user';
 export const Routing = observer(() => {
 
 	const userStore = useContext(user);
-	console.log('token', userStore.token);
+	useEffect(() => {
+
+		userStore.check();
+
+	}, []);
 
 	return (
 		<Router>
 			<Fragment>
 				<PrivateRouter
-					token={userStore.token}
+					isLogged={userStore.isLogged}
+					checkingUser={userStore.checkingUser}
 					path={'/'}
 					exact
 					component={HomePage}

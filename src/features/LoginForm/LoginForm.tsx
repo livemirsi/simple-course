@@ -24,7 +24,7 @@ export const LoginFormComponent = ({ onAuthDone }: IProps) => {
 
 	useLayoutEffect(() => {
 
-		if (userStore.token) {
+		if (userStore.isLogged) {
 
 			onAuthDone();
 
@@ -35,6 +35,7 @@ export const LoginFormComponent = ({ onAuthDone }: IProps) => {
 	return (
 		<FormComponent
 			status={userStore.status}
+			errors={userStore.errors}
 			email={email}
 			password={password}
 			emailIsValid={emailIsValid}

@@ -6,10 +6,15 @@ export enum Status {
 }
 
 export interface IUser {
-	token: string;
+	isLogged: boolean;
+	checkingUser: boolean;
 	name: string;
 	email: string;
 	status: string;
 	errors: Array<IError>;
-	auth: ({ email, password }: {email: string, password: string}) => void
+	signUp: () => void;
+	notAuthorized: () => void;
+	logged: ({ name, email }: {name: string, email: string}) => void;
+	check: () => void;
+	auth: ({ email, password }: {email: string, password: string}) => void;
 }
