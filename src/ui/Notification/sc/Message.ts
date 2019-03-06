@@ -46,5 +46,6 @@ export const Message = styled.div<IProps>`
 		position: absolute;
 		left: 5px;
 		top: 5px;
+		pointer-events: none;
 	}
 `;
