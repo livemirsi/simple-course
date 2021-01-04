@@ -4,7 +4,7 @@ import 'firebase/auth';
 import { IUserAuth, ICheck } from 'api/user/type';
 
 const config = {
-	apiKey:            'AIzaSyDsqdcIEOC5eTuX8SYP57t20C63lf7mKTg',
+	apiKey:            '',
 	authDomain:        'simple-course-6639d.firebaseapp.com',
 	databaseURL:       'https://simple-course-6639d.firebaseio.com',
 	projectId:         'simple-course-6639d',
